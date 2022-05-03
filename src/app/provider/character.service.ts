@@ -9,6 +9,20 @@ export class CharacterService {
 
   constructor(private service: ServiceService) { }
 
+  public getCharacterById(id:number){
+    return new Promise((ret) =>{
+      this.service.getDados('/v1/public/characters/'+ id, '')
+      .then((data: any)=>{
+       if(data && data.data && data.data.results){
+         ret(data.data.results);
+       }else{
+         ret([]);
+       }
+
+      })
+    })
+  }
+
   /* atualiza as informações de paginação */
   private updatePagination(pagination: PaginationComponent, data: any){
     pagination.setTotal(data.total);
