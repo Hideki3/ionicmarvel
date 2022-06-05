@@ -20,7 +20,7 @@ export class HomePage {
     public pagination = new PaginationComponent();
     public checking = false;
 
-    constructor(private characterService: CharacterService, 
+    constructor(private characterService: CharacterService,
                 private navCtrl: NavController){
       this.pagination.setLimit(10);
       this.getAllCharacters();
